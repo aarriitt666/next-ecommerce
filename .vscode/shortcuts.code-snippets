@@ -1,0 +1,23 @@
+{
+    "compt": {
+        "prefix": "compt",
+        "body": [
+            "",
+            "const ${1:${TM_FILENAME_BASE/(.)(.*)/${1:/capitalize}${2}/}} = () => {",
+            "  return (",
+            "    <div className=''>Page</div>",
+            "  );",
+            "};",
+            "",
+            "export default ${1:${TM_FILENAME_BASE/(.)(.*)/${1:/capitalize}${2}/}};"
+        ],
+        "description": "Create a Page component with Sass"
+    },
+    "divt": {
+        "prefix": "divt",
+        "body": [
+            "<div className=''></div>"
+        ],
+        "description": "Create a barebone div with an empty class attribute"
+    }
+}
