@@ -5,7 +5,7 @@
             "",
             "const ${1:${TM_FILENAME_BASE/(.)(.*)/${1:/capitalize}${2}/}} = () => {",
             "  return (",
-            "    <div className=''>Page</div>",
+            "    <div className=''>${1:${TM_FILENAME_BASE/(.)(.*)/${1:/capitalize}${2}/}}</div>",
             "  );",
             "};",
             "",
