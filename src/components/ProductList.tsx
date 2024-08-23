@@ -6,7 +6,7 @@ import DOMPurify from 'isomorphic-dompurify';
 
 const PRODUCTS_PER_PAGE = 20
 
-const ProductList = async ({ categoryId, limit }: { categoryId: string; limit?: number; }) => {
+const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: string; limit?: number; searchParams?: any; }) => {
 
     const wixClient = await wixClientServer();
 
