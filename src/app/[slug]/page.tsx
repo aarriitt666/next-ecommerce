@@ -11,6 +11,9 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
   const products = await wixClient.products.queryProducts().eq("slug", params.slug).find();
   if (!products.items[0]) { return notFound }
   const product = products.items[0]
+  // Inspect the entire product object and the variants
+  console.log('Product:', JSON.stringify(product, null, 2));
+  console.log('Product Variants:', JSON.stringify(product.variants, null, 2));
   return <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative flex flex-col lg:flex-row gap-16">
     {/* IMG  */}
     <div className='w-full lg:w-1/2 lg:sticky top-0 h-max'>
@@ -30,7 +33,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         </div>
       )}
       <div className='h-[2px] bg-gray-100' />
-      <CustomizeProducts />
+      {product.variants && product.productOptions && (<CustomizeProducts productId={product._id!} variants={product.variants} productOptions={product.productOptions} />)}
       <Add />
       <div className='h-[2px] bg-gray-100' />
       {product.additionalInfoSections?.map((section: any) => (
