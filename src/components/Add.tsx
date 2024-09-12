@@ -24,7 +24,7 @@ const Add = ({productId, variantId, stockNumber}: {productId: string, variantId:
                         {quantity}
                         <button className="cursor-pointer text-xl" onClick={() => handleQuantity("i")}>+</button>
                     </div>
-                    <div className='text-xs'>Only <span className="text-orange-500">{stockNumber} items</span> left! <br /> {"Don't"} missed it.</div>
+                    {stockNumber < 1 ? (<div className="text-xs">Product is out of stock</div>) : (<div className='text-xs'>Only <span className="text-orange-500">{stockNumber} items</span> left! <br /> {"Don't"} missed it.</div>)}
                 </div>
                 <button className="w-36 text-sm rounded-3xl ring-1 ring-haodepink text-haodepink py-2 px-4 hover:bg-haodepink hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-none">Add to Cart</button>
             </div>

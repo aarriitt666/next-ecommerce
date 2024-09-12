@@ -3,6 +3,7 @@ import { products } from "@wix/stores";
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from 'isomorphic-dompurify';
+import Pagination from "./Pagination";
 
 const PRODUCTS_PER_PAGE = 20;
 
@@ -22,7 +23,8 @@ const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: st
         .hasSome("productType", searchParams?.type ? [searchParams.type] : ["physical", "digital"])
         .gt("priceData.price", searchParams?.min || 0)
         .lt("priceData.price", searchParams?.max || 9999999999)
-        .limit(limit || PRODUCTS_PER_PAGE);
+        .limit(limit || PRODUCTS_PER_PAGE)
+        .skip(searchParams?.page ? parseInt(searchParams.page) * (limit || PRODUCTS_PER_PAGE) : 0);
 
     const res = await productQuery.find();  // First, get the result
 
@@ -72,6 +74,7 @@ const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: st
                     <button className="rounded-2xl ring-1 ring-haodepink text-haodepink py-2 px-4 text-xs hover:bg-haodepink hover:text-white w-max">Add to Cart</button>
                 </Link>
             ))}
+            <Pagination currentPage={res.currentPage || 0} hasPrev={res.hasPrev()} hasNext={res.hasNext()}/>
         </div >
     );
 };
