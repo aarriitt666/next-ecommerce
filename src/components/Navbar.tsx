@@ -28,10 +28,10 @@ const Navbar = () => {
             <Link href="/">Deals</Link>
             <Link href="/">About</Link>
             <Link href="/">Contact</Link>
-            <Link href="/">Logout</Link>
-            <Link href="/" className="mr-4">
+            {/* <Link href="/">Logout</Link> */}
+            {/* <Link href="/" className="mr-4">
               Cart(1)
-            </Link>
+            </Link> */}
           </div>
         </div>
         {/* RIGHT */}
